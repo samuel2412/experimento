@@ -51,10 +51,10 @@ public class ExperimentosController {
 		}
 
 		String path = fileSaver.write("arquivos-anexo", anexo);
-		System.out.println(path);
+		//System.out.println(path);
 		ex.setAnexoPath(path);
 		experimentoDao.salvar(ex);
-		redirectAttributes.addFlashAttribute("status", "Experimento cadastrado com sucesso!");
+		redirectAttributes.addFlashAttribute("sucesso", "Experimento cadastrado com sucesso!");
 
 		return new ModelAndView("redirect:ex");
 	}
@@ -65,7 +65,7 @@ public class ExperimentosController {
 		
 		ModelAndView modelAndView = new ModelAndView("experimentos/lista");
 		modelAndView.addObject("experimentos", experimentos);
-
+		modelAndView.addObject("tipos", TipoCusto.values());
 		return modelAndView;
 	}
 

@@ -35,12 +35,13 @@ public class FinanciarController {
             try {
                 String response = restTemplate.postForObject(uri, 
                     new DadosPagamento(relatorio.getTotal()), String.class);
-                model.addFlashAttribute("status", response);
+                model.addFlashAttribute("sucesso", response);
                 System.out.println(response);
                 return new ModelAndView("redirect:/ex");
             } catch (HttpClientErrorException e) {
                 e.printStackTrace();
-                model.addFlashAttribute("status", "Valor maior que o permitido");
+                model.addFlashAttribute("falha"
+                		+ "", "Valor maior que o permitido");
                 return new ModelAndView("redirect:/ex");
             }
         };

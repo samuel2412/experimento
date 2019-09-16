@@ -13,77 +13,104 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Livros de Java, SOA, Android, iPhone, Ruby on Rails e
-	muito mais - Casa do Código</title>
+<title>Projeto Financiamento de Experimentos</title>
 
-<link rel="icon"
-	href="//cdn.shopify.com/s/files/1/0155/7645/t/177/assets/favicon.ico?11981592617154272979"
-	type="image/ico" />
-<link href="https://plus.googlecom/108540024862647200608"
-	rel="publisher" />
-<link href="${contextPath}resources/css/cssbase-min.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700'
-	rel='stylesheet' />
-<link href="${contextPath}resources/css/fonts.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link href="${contextPath}resources/css/fontello-ie7.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/fontello-embedded.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/fontello.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link href="${contextPath}resources/css/style.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link href="${contextPath}resources/css/layout-colors.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/responsive-style.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/guia-do-programador-style.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/produtos.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link rel="canonical" href="http://www.casadocodigo.com.br/" />
+
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}resources/css/bootstrap.min.css">
+<script type="text/javascript"
+	src="${contextPath}resources/js/bootstrap.min.css"></script>
 </head>
 <body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarColor01" aria-controls="navbarColor01"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-	<header id="layout-header">
-		<div class="clearfix container">
-			<a href="/" id="logo"> </a>
-			<div id="header-content">
-				<nav id="main-nav">
-					<ul class="clearfix">
-						<li><a href="COLOQUE AQUI A URL DOS ITENS" rel="nofollow">Carrinho
-								(${relatorio.quantidade })</a></li>
-						<li><a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre
-								Nós</a></li>
-						<li><a href="/pages/perguntas-frequentes" rel="nofollow">Perguntas
-								Frequentes</a></li>
-					</ul>
-				</nav>
+			<div class="collapse navbar-collapse" id="navbarColor01">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/" />'>Home </a></li>
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/ex/registro" />'>Registro</a></li>
+					<li class="nav-item "><a class="nav-link"
+						href='<c:url value="/ex" />'>Consultar </a></li>
+					<li class="nav-item active"><a class="nav-link"
+						href='<c:url value="/relatorio" />'>Escolhidos
+							(${relatorio.quantidade}) <span class="sr-only">(current)</span>
+					</a></li>
+				</ul>
+				
 			</div>
-		</div>
+		</nav>
 	</header>
+	<p>
+	<div class="container">
+	<h2>Escolhidos</h2>
+		<table class="table table-hover">
+			<thead>
+				<tr class="table-dark">
+					<th width="20%">Nome</th>
+					<th width="50%">Descrição</th>
+					<th width="10%">Duração (dias)</th>
 
-	<nav class="categories-nav">
-		<ul class="container">
-			<li class="category"><a href="http://www.casadocodigo.com.br">Home</a></li>
-			<li class="category"><a href="/collections/livros-de-agile">
-					Agile </a></li>
-			<li class="category"><a href="/collections/livros-de-front-end">
-					Front End </a></li>
-			<li class="category"><a href="/collections/livros-de-games">
-					Games </a></li>
-			<li class="category"><a href="/collections/livros-de-java">
-					Java </a></li>
-			<li class="category"><a href="/collections/livros-de-mobile">
-					Mobile </a></li>
-			<li class="category"><a
-				href="/collections/livros-desenvolvimento-web"> Web </a></li>
-			<li class="category"><a href="/collections/outros"> Outros </a></li>
-		</ul>
-	</nav>
+					<c:forEach items="${tipos}" var="tipoCusto" varStatus="status">
+						<th width="10%">${tipoCusto}</th>
+					</c:forEach>
 
+					<th width="10%">Total</th>
+					<th width="5%"></th>
+				</tr>
+				</tr>
+			</thead>
+
+			<tbody>
+				<c:forEach items="${relatorio.itens}" var="item">
+					<tr>
+						<td class="item-title">${item.experimento.nome}</td>
+						<td class="item-title">${item.experimento.descricao}</td>
+						<td class="numeric-cell">${item.experimento.duracao}</td>
+
+						<c:forEach items="${item.experimento.custos}" var="custo">
+							<td class="numeric-cell">${custo.valor}</td>
+						</c:forEach>
+
+						<td class="numeric-cell">${relatorio.getTotal(item)}</td>
+
+						<td class="remove-item">
+							<form
+								action="${s:mvcUrl('RC#remover').arg(0, item.experimento.id).arg(1, item.tipoCusto).build()}"
+								method="POST">
+								<input type="image"
+									src="${contextPath}/resources/imagens/excluir.png"
+									alt="Excluir" title="Excluir" />
+							</form>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="6">
+
+						<form action="${s:mvcUrl('FC#finalizar').build()}" method="post">
+							<button type="submit" class="btn btn-outline-success">Financiar
+								Escolhidos</button>
+						</form>
+					</td>
+					<td class="numeric-cell">${relatorio.getTotal() }</td>
+
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+
+	<!-- 
 	<section class="container middle">
 		<h2 id="cart-title">Seu carrinho de compras</h2>
 
@@ -148,96 +175,6 @@
 				</tr>
 			</tfoot>
 		</table>
-
-		<h2>Você já conhece os outros livros da Casa do Código?</h2>
-		<ul id="collection" class="related-books">
-			<li class="col-left"><a href="/products/livro-plsql"
-				class="block clearfix book-suggest"
-				data-book="PL/SQL: Domine a linguagem do banco de dados Oracle">
-					<img width="113px" height="160px"
-					src="http:////cdn.shopify.com/s/files/1/0155/7645/products/plsql-featured_compact.png?v=1434740236"
-					alt="PL/SQL: Domine a linguagem do banco de dados Oracle" />
-			</a></li>
-		</ul>
-
-		<h2>
-
-			<a href="http://www.casadocodigo.com.br">Veja todos os livros que
-				publicamos!</a>
-		</h2>
-	</section>
-
-	<footer id="layout-footer">
-		<div class="clearfix container">
-			<div id="collections-footer">
-				<!-- cdc-footer -->
-				<p class="footer-title">Coleções de Programação</p>
-				<ul class="footer-text-links">
-					<li><a href="/collections/livros-de-java">Java</a></li>
-					<li><a href="/collections/livros-desenvolvimento-web">Desenvolvimento
-							Web</a></li>
-					<li><a href="/collections/livros-de-mobile">Mobile</a></li>
-					<li><a href="/collections/games">Games</a></li>
-					<li><a href="/collections/livros-de-front-end">Front End</a></li>
-				</ul>
-				<p class="footer-title">Outros Assuntos</p>
-				<ul class="footer-text-links">
-					<li><a href="/collections/livros-de-agile">Agile</a></li>
-					<li><a href="/collections/outros">e outros...</a></li>
-				</ul>
-			</div>
-			<div id="social-footer">
-				<!-- books-footer -->
-				<p class="footer-title">Links da Casa do Código</p>
-				<ul class="footer-text-links">
-					<li><a href="http://livros.casadocodigo.com.br" rel="nofollow">Meus
-							E-books</a></li>
-					<li><a href="/pages/sobre-a-casa-do-codigo">Sobre a Casa
-							do Código</a></li>
-					<li><a href="/pages/perguntas-frequentes">Perguntas
-							Frequentes</a></li>
-					<li><a href="https://www.caelum.com.br">Caelum - Ensino e
-							Inovação</a></li>
-					<li><a href="http://www.codecrushing.com/" rel="nofollow">Code
-							Crushing</a></li>
-					<li><a
-						href="http://www.casadocodigo.com.br/pages/politica-de-privacidade"
-						rel="nofollow">Política de Privacidade</a></li>
-				</ul>
-				<p class="footer-title">Redes Sociais</p>
-				<ul>
-					<li class="social-links"><a
-						href="http://www.twitter.com/casadocodigo" target="_blank"
-						id="twitter" rel="nofollow">Facebook</a> <a
-						href="http://www.facebook.com/casadocodigo" target="_blank"
-						id="facebook" rel="nofollow">Twitter</a></li>
-				</ul>
-			</div>
-			<div id="newsletter-footer">
-				<!-- social-footer -->
-				<p class="footer-title">Receba as Novidades e Lançamentos</p>
-				<div id="form-newsletter">
-					<form action="" method="POST" id="ss-form" class="form-newsletter">
-						<ul>
-							<li><input type="hidden" name="pageNumber" value="0" /><input
-								type="hidden" name="backupCache" value="" /><input type="email"
-								name="entry.0.single" value="" class="ss-q-short" id="entry_0"
-								placeholder="seu@email.com" /></li>
-							<li><input type="submit" name="submit"
-								value="Quero Receber!" id="submit-newsletter" /></li>
-						</ul>
-					</form>
-					<ul>
-						<li class="ie8"><a href="" rel="nofollow">Receba as
-								Novidades e Lançamentos</a></li>
-					</ul>
-				</div>
-				<ul class="footer-payments">
-					<li></li>
-					<li></li>
-				</ul>
-			</div>
-		</div>
-	</footer>
+ -->
 </body>
 </html>

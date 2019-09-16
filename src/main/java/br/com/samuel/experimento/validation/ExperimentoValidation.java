@@ -23,13 +23,13 @@ public class ExperimentoValidation implements Validator {
 		ValidationUtils.rejectIfEmpty(errors, "descricao", "field.required");
 		ValidationUtils.rejectIfEmpty(errors, "dataInicio", "field.required");
 		ValidationUtils.rejectIfEmpty(errors, "dataInicio", "typeMismatch");
-
+		
 		Experimento experimento = (Experimento) target;
 
 		if (experimento.getDuracao() <= 0) {
 			errors.rejectValue("duracao", "field.required");
 		}
-		
+
 	}
 
 }

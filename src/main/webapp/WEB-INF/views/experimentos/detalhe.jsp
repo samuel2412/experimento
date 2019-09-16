@@ -12,214 +12,84 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1" />
-<link rel="icon"
-	href="//cdn.shopify.com/s/files/1/0155/7645/t/177/assets/favicon.ico?11981592617154272979"
-	type="image/ico" />
-<link href="https://plus.googlecom/108540024862647200608"
-	rel="publisher" />
 
-<title>Livros de Java, SOA, Android, iPhone, Ruby on Rails e
-	muito mais - Casa do Código</title>
 
-<link href="${contextPath}resources/css/cssbase-min.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700'
-	rel='stylesheet' />
-<link href="${contextPath}resources/css/fonts.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link href="${contextPath}resources/css/fontello-ie7.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/fontello-embedded.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/fontello.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link href="${contextPath}resources/css/style.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link href="${contextPath}resources/css/layout-colors.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/responsive-style.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/guia-do-programador-style.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/produtos.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link rel="canonical" href="http://www.casadocodigo.com.br/" />
+<title>Projeto Financiamento de Experimentos</title>
+
+
+<link rel="stylesheet" type="text/css"
+	href="${contextPath}resources/css/bootstrap.min.css">
+<script type="text/javascript"
+	src="${contextPath}resources/js/bootstrap.min.css"></script>
 </head>
 <body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarColor01" aria-controls="navbarColor01"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-	<header id="layout-header">
-		<div class="clearfix container">
-			<a href="/" id="logo"> </a>
-			<div id="header-content">
-				<nav id="main-nav">
-
-					<ul class="clearfix">
-						<li><a href="#"> Seu carrinho
-								(${relatorio.quantidade}) </a></li>
-						<li><a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre
-								Nós</a></li>
-						<li><a href="/pages/perguntas-frequentes" rel="nofollow">Perguntas
-								Frequentes</a></li>
-					</ul>
-				</nav>
+			<div class="collapse navbar-collapse" id="navbarColor01">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/" />'>Home </a></li>
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/ex/registro" />'>Registro</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/ex" />'>Consultar </a></li>
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/relatorio" />'>Escolhidos
+							(${relatorio.quantidade})</a></li>
+				</ul>
+				
 			</div>
-		</div>
+		</nav>
 	</header>
-	<nav class="categories-nav">
-		<ul class="container">
-			<li class="category"><a href="http://www.casadocodigo.com.br">Home</a></li>
-			<li class="category"><a href="/collections/livros-de-agile">
-					Agile </a></li>
-			<li class="category"><a href="/collections/livros-de-front-end">
-					Front End </a></li>
-			<li class="category"><a href="/collections/livros-de-games">
-					Games </a></li>
-			<li class="category"><a href="/collections/livros-de-java">
-					Java </a></li>
-			<li class="category"><a href="/collections/livros-de-mobile">
-					Mobile </a></li>
-			<li class="category"><a
-				href="/collections/livros-desenvolvimento-web"> Web </a></li>
-			<li class="category"><a href="/collections/outros"> Outros </a></li>
-		</ul>
-	</nav>
-
-	<article id="livro-css-eficiente">
-		<header id="product-highlight" class="clearfix">
-			<div id="product-overview" class="container">
-				<img width="280px" height="395px"
-					src="http://cdn.shopify.com/s/files/1/0155/7645/products/css-eficiente-featured_large.png?v=1435245145"
-					class="product-featured-image" />
-				<h1 class="product-title">${experimento.nome }</h1>
-				<p class="product-author">
-					<span class="product-author-link"> </span>
-				</p>
-				<p class="book-description">${experimento.descricao }</p>
+	<p>
+	<div class="card mb-3">
+		<form action="<c:url value="/relatorio/add" />" method="post"
+			class="container">
+			<input type="hidden" value="${experimento.id} " name="experimentoId">
+			<h3 class="card-header">${experimento.nome }</h3>
+			<div class="card-body">
+				<h5 class="card-title"></h5>
+				<h6 class="card-subtitle text-muted"></h6>
 			</div>
-		</header>
-
-		<section class="buy-options clearfix">
-			<form action="<c:url value="/relatorio/add" />" method="post" class="container">
-				<input type="hidden" value="${experimento.id} "
-					name="experimentoId">
-				<ul id="variants" class="clearfix">
-
-					<c:forEach items="${experimento.custos }" var="custo">
-						<li class="buy-option"><input type="radio" name="tipoCusto"
-							class="variant-radio" id="tipo" value="${custo.tipo }"
-							checked="checked" /> <label class="variant-label">${custo.tipo }</label>
-							<p class="variant-price">${custo.valor }</p></li>
-					</c:forEach>
-
-				</ul>
-				<button type="submit" class="submit-image icon-basket-alt"
-					title="Compre Agora AQUI COLOQUE O TITULO"></button>
-			</form>
-		</section>
-
-		<div class="container">
-			<section class="summary">
-				<ul>
-					<li>
-						<h3>
-							E muito mais... <a href='/pages/sumario-java8'>veja o sumário</a>.
-						</h3>
-					</li>
-				</ul>
-			</section>
-
-			<section class="data product-detail">
-				<h2 class="section-title">Dados do Experimento:</h2>
-				<p>
-					Duração: <span>${experimento.duracao }</span> dia(s).
-				</p>
-				<p></p>
-				<p>
-					Data de início:
-					<fmt:formatDate pattern="dd/MM/yyyy"
-						value="${experimento.dataInicio.time}" />
-				</p>
-
-				<p>
-					Encontrou um erro? <a href='' target='_blank'>Submeta uma
-						errata</a>
-				</p>
-			</section>
-		</div>
-	</article>
-
-	<footer id="layout-footer">
-		<div class="clearfix container">
-
-			<div id="collections-footer">
-				<!-- cdc-footer -->
-				<p class="footer-title">Coleções de Programação</p>
-				<ul class="footer-text-links">
-					<li><a href="/collections/livros-de-java">Java</a></li>
-					<li><a href="/collections/livros-desenvolvimento-web">Desenvolvimento
-							Web</a></li>
-					<li><a href="/collections/livros-de-mobile">Mobile</a></li>
-					<li><a href="/collections/games">Games</a></li>
-					<li><a href="/collections/livros-de-front-end">Front End</a></li>
-				</ul>
-				<p class="footer-title">Outros Assuntos</p>
-				<ul class="footer-text-links">
-					<li><a href="/collections/livros-de-agile">Agile</a></li>
-					<li><a href="/collections/outros">e outros...</a></li>
-				</ul>
+			<img style="height: 200px; width: 100%; display: block;"
+				src="${contextPath}/resources/imagens/projeto.svg" alt="Card image">
+			<div class="card-body">
+				<p class="card-text">Descricão: ${experimento.descricao }</p>
 			</div>
-			<div id="social-footer">
-				<!-- books-footer -->
-				<p class="footer-title">Links da Casa do Código</p>
-				<ul class="footer-text-links">
-					<li><a href="http://livros.casadocodigo.com.br" rel="nofollow">Meus
-							E-books</a></li>
-					<li><a href="/pages/sobre-a-casa-do-codigo">Sobre a Casa
-							do Código</a></li>
-					<li><a href="/pages/perguntas-frequentes">Perguntas
-							Frequentes</a></li>
-					<li><a href="https://www.caelum.com.br">Caelum - Ensino e
-							Inovação</a></li>
-					<li><a href="http://www.codecrushing.com/" rel="nofollow">Code
-							Crushing</a></li>
-					<li><a
-						href="http://www.casadocodigo.com.br/pages/politica-de-privacidade"
-						rel="nofollow">Política de Privacidade</a></li>
-				</ul>
-				<p class="footer-title">Redes Sociais</p>
-				<ul>
-					<li class="social-links"><a
-						href="http://www.twitter.com/casadocodigo" target="_blank"
-						id="twitter" rel="nofollow">Facebook</a> <a
-						href="http://www.facebook.com/casadocodigo" target="_blank"
-						id="facebook" rel="nofollow">Twitter</a></li>
-				</ul>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><b>Duraçao:</b>
+					${experimento.duracao } dias</li>
+				<c:forEach items="${experimento.custos }" var="custo">
+					<li class="list-group-item"><input type="hidden"
+						name="tipoCusto" id="tipo" value="${custo.tipo }"
+						checked="checked" /> <label class="variant-label"><b>Custo
+								com ${custo.tipo }</b> em reais: ${custo.valor }</label></li>
+				</c:forEach>
+				<li class="list-group-item"><b>Data de início: <fmt:formatDate
+							pattern="dd/MM/yyyy" value="${experimento.dataInicio.time}" />
+				</b>
+				<li class="list-group-item">
+					<div class="float-right">
+						<a href="<c:url value="/ex" />">
+							<button type="button" class="btn btn-outline-danger">Voltar</button>
+						</a>
+						<button type="submit" class="btn btn-outline-success">Adicionar
+							aos Escolhidos</button>
+					</div>
+
+				</li>
+			</ul>
+
+			<div class="card-footer text-muted">
+				<br>
 			</div>
-			<div id="newsletter-footer">
-				<!-- social-footer -->
-				<p class="footer-title">Receba as Novidades e Lançamentos</p>
-				<div id="form-newsletter">
-					<form action="" method="POST" id="ss-form" class="form-newsletter">
-						<ul>
-							<li><input type="hidden" name="pageNumber" value="0" /><input
-								type="hidden" name="backupCache" value="" /><input type="email"
-								name="entry.0.single" value="" class="ss-q-short" id="entry_0"
-								placeholder="seu@email.com" /></li>
-							<li><input type="submit" name="submit"
-								value="Quero Receber!" id="submit-newsletter" /></li>
-						</ul>
-					</form>
-					<ul>
-						<li class="ie8"><a href="" rel="nofollow">Receba as
-								Novidades e Lançamentos</a></li>
-					</ul>
-				</div>
-				<ul class="footer-payments">
-					<li></li>
-					<li></li>
-				</ul>
-			</div>
-		</div>
-	</footer>
+		</form>
+	</div>
 </body>
 </html>
