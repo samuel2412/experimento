@@ -95,7 +95,7 @@
 
 				</div>
 
-
+<!--  
 				<div class="form-group">
 					<label for="exampleInputFile">Anexo: </label> <input type="file"
 						class="form-control-file" id="anexo" name="anexo"
@@ -103,7 +103,7 @@
 						class="form-text text-muted">Você pode anexar um arquivo
 						que julgar relevante.</small>
 				</div>
-
+-->
 
 				<button type="submit" class="btn btn-outline-success">Salvar</button>
 			</fieldset>

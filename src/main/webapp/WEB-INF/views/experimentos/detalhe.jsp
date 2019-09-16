@@ -47,6 +47,8 @@
 		</nav>
 	</header>
 	<p>
+	
+	
 	<div class="card mb-3">
 		<form action="<c:url value="/relatorio/add" />" method="post"
 			class="container">
@@ -57,7 +59,9 @@
 				<h6 class="card-subtitle text-muted"></h6>
 			</div>
 			<img style="height: 200px; width: 100%; display: block;"
-				src="${contextPath}/resources/imagens/projeto.svg" alt="Card image">
+				src="$resources/imagens/projeto.svg" alt="Card image">
+				
+				src="public/img/PennUnitedWebsite.png"
 			<div class="card-body">
 				<p class="card-text">Descricão: ${experimento.descricao }</p>
 			</div>

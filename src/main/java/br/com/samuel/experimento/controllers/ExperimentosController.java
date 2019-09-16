@@ -50,9 +50,9 @@ public class ExperimentosController {
 			return form(ex);
 		}
 
-		String path = fileSaver.write("arquivos-anexo", anexo);
+		//String path = fileSaver.write("arquivos-anexo", anexo);
 		//System.out.println(path);
-		ex.setAnexoPath(path);
+		//ex.setAnexoPath(path);
 		experimentoDao.salvar(ex);
 		redirectAttributes.addFlashAttribute("sucesso", "Experimento cadastrado com sucesso!");
 
