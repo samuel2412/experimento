@@ -59,7 +59,7 @@
 				<h6 class="card-subtitle text-muted"></h6>
 			</div>
 			<img style="height: 200px; width: 100%; display: block;"
-				src="resources/imagens/projeto.svg" alt="Card image">
+				src="/resources/imagens/projeto.svg" alt="Card image">
 				
 				src="public/img/PennUnitedWebsite.png"
 			<div class="card-body">
