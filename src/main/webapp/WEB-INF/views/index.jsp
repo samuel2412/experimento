@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,7 +21,8 @@
 </head>
 <body>
 	<header> <nav
-		class="navbar navbar-expand-lg navbar-dark bg-primary">
+		class="navbar navbar-expand-lg navbar-dark bg-primary"
+		role="navigation">
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarColor01" aria-controls="navbarColor01"
 		aria-expanded="false" aria-label="Toggle navigation">
@@ -55,16 +55,23 @@
 		<p>Trata-se de uma aplicação que permite o cadastro de
 			"experimentos" e o financiamento dos "experimentos" que o usuário se
 			interessar.</p>
-		<p>Atráves de uma conexão a uma api
+		<p>
+			Atráves de uma conexão a uma api
 			(http://book-payment.herokuapp.com/payment) fornecida pela Alura em
-			seu <a href="https://cursos.alura.com.br/course/spring-mvc-1-criando-aplicacoes-web">curso de SpringMVC</a>, é simulado uma autorização de pagamento.</p>
-			<p>Vale lembrar que todas as operações realizadas aqui são para propósitos acadêmicos.
-			<p> O código fonte desta aplicação encontra-se <a href="https://github.com/samuel2412/experimento"> aqui</a>.
-			<p>Autor: Samuel Alves de Almeida.
+			seu <a
+				href="https://cursos.alura.com.br/course/spring-mvc-1-criando-aplicacoes-web">curso
+				de SpringMVC</a>, é simulado uma autorização de pagamento.
+		</p>
+		<p>Vale lembrar que todas as operações realizadas aqui são para
+			propósitos acadêmicos.
+		<p>
+			O código fonte desta aplicação encontra-se <a
+				href="https://github.com/samuel2412/experimento"> aqui</a>.
+		<p>Autor: Samuel Alves de Almeida.
 	</div>
-	
-	
+
+
 	<script type="text/javascript"
-	src="${contextPath}resources/js/bootstrap.min.css"></script>
+		src="${contextPath}resources/js/bootstrap.min.css"></script>
 </body>
 </html>
