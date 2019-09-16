@@ -11,7 +11,7 @@ public class HomeController {
 
 	@RequestMapping("/")
 	public ModelAndView index() {
-		ModelAndView modelAndView = new ModelAndView("/home");
+		ModelAndView modelAndView = new ModelAndView("/index");
 		
 		return modelAndView;
 
