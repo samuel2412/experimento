@@ -26,9 +26,9 @@ public class JPAConfiguration {
         factoryBean.setJpaVendorAdapter(vendorAdapter);
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUsername("root");
-        dataSource.setPassword("121314"); // modifique para a senha do seu banco
-        dataSource.setUrl("jdbc:mysql://localhost:3306/experimento");
+        dataSource.setUsername("hr4zensofusigu8q");
+        dataSource.setPassword("w7iq2o9oppyd1sfk"); // modifique para a senha do seu banco
+        dataSource.setUrl("jdbc:mysql://g9fej9rujq0yt0cd.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dz5nks1xlfhuon7k");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         factoryBean.setDataSource(dataSource);
 
