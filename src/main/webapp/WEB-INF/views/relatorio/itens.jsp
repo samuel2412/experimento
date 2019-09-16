@@ -18,8 +18,7 @@
 
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}resources/css/bootstrap.min.css">
-<script type="text/javascript"
-	src="${contextPath}resources/js/bootstrap.min.css"></script>
+
 </head>
 <body>
 	<header>
@@ -176,5 +175,8 @@
 			</tfoot>
 		</table>
  -->
+ 
+ <script type="text/javascript"
+	src="${contextPath}resources/js/bootstrap.min.css"></script>
 </body>
 </html>

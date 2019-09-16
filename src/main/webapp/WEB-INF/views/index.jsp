@@ -15,8 +15,7 @@
 
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}resources/css/bootstrap.min.css">
-<script type="text/javascript"
-	src="${contextPath}resources/js/bootstrap.min.css"></script>
+
 
 <title>Projeto Financiamento de Experimentos</title>
 
@@ -63,5 +62,9 @@
 			<p> O código fonte desta aplicação encontra-se <a href="https://github.com/samuel2412/experimento"> aqui</a>.
 			<p>Autor: Samuel Alves de Almeida.
 	</div>
+	
+	
+	<script type="text/javascript"
+	src="${contextPath}resources/js/bootstrap.min.css"></script>
 </body>
 </html>

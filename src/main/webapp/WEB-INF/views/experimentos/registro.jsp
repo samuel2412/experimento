@@ -21,8 +21,7 @@
 <c:url value="/" var="contextPath" />
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}resources/css/bootstrap.min.css">
-<script type="text/javascript"
-	src="${contextPath}resources/js/bootstrap.min.css"></script>
+
 </head>
 <body>
 	<header>
@@ -152,5 +151,7 @@
 		<button type="submit">Cadastrar</button>
 	</form:form>
 	-->
+	<script type="text/javascript"
+	src="${contextPath}resources/js/bootstrap.min.css"></script>
 </body>
 </html>
